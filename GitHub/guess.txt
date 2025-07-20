@@ -1,0 +1,35 @@
+import random  # On importe un module pour générer des nombres aléatoires
+
+def devinette():
+    print("Greetings human")
+    print("I will think of a number between 1 and 10. can you guess it in 1 try ?")
+
+    nombre_secret = random.randint(1, 10)  # Le nombre à deviner
+    essais = 0  # Nombre d'essais du joueur
+
+    while True:
+        reponse = input("take a shot : ")
+        
+        # On vérifie si l'utilisateur a bien tapé un nombre
+        if not reponse.isdigit():
+            print("between 1 and 10 only mate.")
+            continue
+
+        reponse = int(reponse)
+        essais += 1
+
+        if reponse < nombre_secret:
+            print("bigger !")
+        elif reponse > nombre_secret:
+            print("smaller !")
+        else:
+            if essais == 1:
+                reponse = nombre_secret
+                print("LEGEND !")
+            else:
+                print(f"WINNER WINNER CHICKEN DINNER ! you found it in {essais} tries tho")
+            break  # On sort de la boucle
+
+# On lance la fonction si le script est exécuté
+if __name__ == "__main__":
+    devinette()
